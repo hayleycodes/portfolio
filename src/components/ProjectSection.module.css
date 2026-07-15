@@ -44,8 +44,8 @@
   z-index: 1;
   display: flex;
   justify-content: center;
-  gap: 40px;
   align-items: center;
+  gap: 40px;
 }
 
 @media (min-width: 860px) {
@@ -54,32 +54,37 @@
   }
 }
 
-/* Screenshot sits on the left; text follows on the right. */
-.mediaLeft .media {
-  order: -1;
-}
-
 .content {
+  flex: 1 1 auto;
   min-width: 0;
+  order: 1;
 }
 
 .shot {
-  width: auto;
-  height: 650px;
+  flex: 0 0 auto;
+  width: min(300px, 100%);
+  height: auto;
   border-radius: var(--radius-lg);
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
   display: block;
+  order: 2;
+}
+
+/* Screenshot on the left; text follows on the right. */
+.mediaLeft .shot {
+  order: 0;
 }
 
 /* Stack on small screens, screenshot always on top. */
 @media (max-width: 859px) {
   .layout {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    gap: 28px;
   }
-  .media {
-    order: -1;
-    max-width: 460px;
-    margin: 0 auto;
+  .content,
+  .shot,
+  .mediaLeft .shot {
+    order: 0;
   }
 }
 
