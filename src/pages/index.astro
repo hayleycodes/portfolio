@@ -1,0 +1,44 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import ProjectSection from "../components/ProjectSection.astro";
+import Footer from "../components/Footer.astro";
+import relentlessShot from "../assets/relentless.png";
+import baggageShot from "../assets/baggage.png";
+---
+
+<Layout>
+  <Header />
+  <main>
+    <Hero />
+    <div id="work">
+      <ProjectSection
+        theme="relentless"
+        eyebrow="Side quest"
+        name="Relentless"
+        tagline="Your health, untangled, for you."
+        body="A personal medical record for people juggling many medications, diagnoses, specialists, and procedures — and all the tangled connections between them. A calm, private place to make sense of your own care."
+        stack={["React", "Vite", "Supabase", "TypeScript"]}
+        image={relentlessShot}
+        imageAlt="Screenshot of the Relentless app"
+        imageSide="left"
+        link="https://berelentless.health"
+        linkLabel="berelentless.health"
+      />
+      <ProjectSection
+        theme="baggage"
+        eyebrow="Side quest"
+        name="Baggage"
+        tagline="Keep track of what you carry."
+        body="A little web app for organising the things you pack and carry. Built to be quick to reach for and calm to use. (Placeholder copy — swap in the real description.)"
+        stack={["React", "Vite", "TypeScript"]}
+        image={baggageShot}
+        imageAlt="Screenshot of the Baggage app"
+        imageSide="right"
+        status="In progress"
+      />
+    </div>
+  </main>
+  <Footer />
+</Layout>

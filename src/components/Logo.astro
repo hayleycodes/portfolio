@@ -1,0 +1,11 @@
+---
+import styles from "./Logo.module.css";
+
+interface Props {
+  height?: number;
+}
+
+const { height = 40 } = Astro.props;
+---
+
+<span class={styles.logo} style={`font-size: ${height}px;`}>hayley<span class={styles.dot}>.</span>codes</span>

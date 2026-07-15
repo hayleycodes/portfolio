@@ -1,0 +1,107 @@
+---
+import styles from "./Hero.module.css";
+import "./mountain-art.css";
+---
+<section class="mountainArt">
+  <svg
+    class="mountainArt__scene"
+    viewBox="0 0 1000 850"
+    preserveAspectRatio="xMidYMax meet"
+    role="img"
+    aria-label="Illustration of mountains and clouds"
+  >
+    <!-- sky -->
+    <rect x="0" y="0" width="1000" height="850" fill="#45a8e3" />
+
+    <!-- clouds -->
+    <g fill="#f5f5f5">
+      <g>
+        <rect x="70" y="229" width="230" height="72" rx="36" />
+        <circle cx="139" cy="235" r="51" />
+        <circle cx="197" cy="216" r="64" />
+      </g>
+      <g>
+        <rect x="430" y="87" width="180" height="55" rx="28" />
+        <circle cx="484" cy="92" r="40" />
+        <circle cx="529" cy="77" r="50" />
+      </g>
+      <g>
+        <rect x="750" y="206" width="150" height="44" rx="22" />
+        <circle cx="795" cy="210" r="33" />
+        <circle cx="832" cy="198" r="42" />
+      </g>
+    </g>
+
+    <!-- back mountain (m3) -->
+    <polygon points="500,850 680,850 680,400" fill="#2a5e4f" />
+    <polygon points="680,850 860,850 680,400" fill="#245447" />
+
+    <!-- centre mountain (m1) with snow cap -->
+    <polygon points="265,850 500,850 500,290" fill="#325c50" />
+    <polygon points="500,850 735,850 500,290" fill="#294b41" />
+    <polygon points="444,424 500,424 500,290" fill="#f5f5f5" />
+    <polygon points="500,424 556,424 500,290" fill="#ece9e9" />
+
+    <!-- front mountain (m2) -->
+    <polygon points="175,850 300,850 300,520" fill="#2d6053" />
+    <polygon points="300,850 425,850 300,520" fill="#245447" />
+  </svg>
+</section>
+<section id="about" class={styles.hero} data-hero>
+  <div class:list={["container", styles.heroInner]} data-hero-inner>
+    <span class="eyebrow">Software developer</span>
+    <h1>
+      I build calm,<br />
+      <span class={styles.mono}>considered</span> web apps.
+    </h1>
+    <p class={styles.lede}>
+      Hi, I'm Hayley &mdash; a software developer who likes shipping small, useful things.
+      I work mostly in TypeScript, React and Astro, backed by Postgres and Supabase.
+    </p>
+    <p class={styles.bio}>
+      I'm working through my own complicated health journey, and a lot of what I build comes
+      from real needs &mdash; calm, private tools that make a messy thing feel manageable. I care
+      about clear interfaces, honest software, and shipping.
+    </p>
+    <p class={styles.bio}>
+      When I'm not coding I'm probably wrangling a herd of guinea pigs.
+    </p>
+    <div class={styles.ctaRow}>
+      <a class="btn" href="#work">See my work <span aria-hidden="true">&darr;</span></a>
+      <a class="btn" href="mailto:hayley@duke.co">Get in touch</a>
+      <a class="btn btn-ghost" href="https://github.com/hayleycodes">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<script>
+  const hero = document.querySelector<HTMLElement>("[data-hero]");
+  const inner = document.querySelector<HTMLElement>("[data-hero-inner]");
+
+  if (hero && inner && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    let ticking = false;
+
+    const update = () => {
+      const distance = hero.offsetHeight;
+      const progress = Math.min(Math.max(window.scrollY / distance, 0), 1);
+      const eased = progress * progress;
+      inner.style.setProperty("--hero-scale", String(1 - eased * 0.18));
+      // inner.style.setProperty("--hero-opacity", String(1 - eased * 0.85));
+      inner.style.setProperty("--hero-translate", `${eased * -32}px`);
+      ticking = false;
+    };
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!ticking) {
+          requestAnimationFrame(update);
+          ticking = true;
+        }
+      },
+      { passive: true }
+    );
+
+    update();
+  }
+</script>

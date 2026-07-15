@@ -1,0 +1,28 @@
+---
+import Logo from "./Logo.astro";
+import styles from "./Footer.module.css";
+
+const year = new Date().getFullYear();
+---
+
+<footer class={styles.footer}>
+  <div class:list={["container", styles.footerInner]}>
+    <div class={styles.brand}>
+      <Logo height={34} />
+      <p class={styles.tagline}>Calm, considered web apps.</p>
+    </div>
+
+    <div class={styles.metaGroup}>
+      <div class={styles.meta}>
+        <span>&copy; {year} Hayley</span>
+        <span class={styles.dotSep} aria-hidden="true">·</span>
+        <span>Built with <a href="https://astro.build">Astro</a></span>
+      </div>
+      <div class={styles.legal}>
+        <a href="https://github.com/hayleycodes">GitHub</a>
+        <span class={styles.dotSep} aria-hidden="true">·</span>
+        <a href="mailto:hayley@duke.co">Email</a>
+      </div>
+    </div>
+  </div>
+</footer>

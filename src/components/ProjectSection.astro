@@ -1,0 +1,62 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import styles from "./ProjectSection.module.css";
+
+interface Props {
+  theme: "relentless" | "baggage";
+  eyebrow: string;
+  name: string;
+  tagline: string;
+  body: string;
+  stack: string[];
+  image: ImageMetadata;
+  imageAlt: string;
+  imageSide: "left" | "right";
+  link?: string | null;
+  linkLabel?: string | null;
+  status?: string | null;
+}
+
+const {
+  theme,
+  eyebrow,
+  name,
+  tagline,
+  body,
+  stack,
+  image,
+  imageAlt,
+  imageSide,
+  link = null,
+  linkLabel = null,
+  status = null,
+} = Astro.props;
+---
+
+<section class:list={[styles.section, styles[theme]]}>
+  <div class:list={["container", styles.layout, imageSide === "left" && styles.mediaLeft]}>
+    <Image src={image} alt={imageAlt} class={styles.shot} />
+
+    <div class={styles.content}>
+      <span class="eyebrow">{eyebrow}</span>
+      <h2 class={styles.name}>{name}</h2>
+      <p class={styles.tagline}>{tagline}</p>
+      <p class={styles.body}>{body}</p>
+
+      <ul class={styles.stack}>
+        {stack.map((s) => <li class={styles.chip}>{s}</li>)}
+      </ul>
+
+      <div class={styles.ctaRow}>
+        {link ? (
+          <a class={styles.visit} href={link} target="_blank" rel="noopener">
+            {linkLabel ?? "Visit"} <span aria-hidden="true">&nearr;</span>
+          </a>
+        ) : (
+          status && <span class={styles.status}>{status}</span>
+        )}
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,23 @@
+---
+import styles from "./About.module.css";
+---
+
+<section id="about" class={styles.about}>
+  <div class:list={["container", styles.aboutInner]}>
+    <span class="eyebrow">About</span>
+    <h2>A developer who builds the tools she wishes existed.</h2>
+    <p>
+      I'm a software developer working through my own complicated health journey, and a lot of
+      what I build comes from real needs — calm, private tools that make a messy thing feel
+      manageable. I care about clear interfaces, honest software, and shipping.
+    </p>
+    <p>
+      Most of my work lives in TypeScript with React, Astro, and Supabase. When I'm not coding
+      I'm probably wrangling a herd of guinea pigs.
+    </p>
+    <div class={styles.ctaRow}>
+      <a class="btn" href="mailto:hayley@duke.co">Get in touch</a>
+      <a class="btn btn-ghost" href="https://github.com/hayleycodes">GitHub</a>
+    </div>
+  </div>
+</section>
