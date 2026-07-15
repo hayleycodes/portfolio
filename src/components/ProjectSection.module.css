@@ -27,15 +27,15 @@
   --sec-btn-text: #4b3b7a;
 }
 
-/* Baggage — deep purple with a pink pop (from baggage/src/variables.css) */
+/* Baggage — the pink accent (#ff5ca8) with a deep-purple pop (from baggage/src/variables.css) */
 .baggage {
   --sec-bg:
-    radial-gradient(1000px 520px at 15% -10%, #7d2ce0, transparent 55%),
-    radial-gradient(760px 480px at 105% 110%, rgba(255, 92, 168, 0.28), transparent 60%),
-    #6617cb;
-  --sec-text: #fdfbff;
-  --sec-tagline: #ece3fb;
-  --sec-btn-bg: #ff5ca8;
+    radial-gradient(1000px 520px at 15% -10%, #e8479f, transparent 55%),
+    radial-gradient(760px 480px at 105% 110%, rgba(102, 23, 203, 0.30), transparent 60%),
+    #cb228f;
+  --sec-text: #ffffff;
+  --sec-tagline: #ffe3f1;
+  --sec-btn-bg: #6617cb;
   --sec-btn-text: #ffffff;
 }
 
@@ -92,6 +92,10 @@
 .name {
   color: var(--sec-text);
   margin-bottom: 0.1em;
+}
+
+.baggage .name {
+  font-family: "Caveat Brush", var(--font-family-heading);
 }
 
 .tagline {

@@ -2,52 +2,35 @@
 import styles from "./Hero.module.css";
 import "./mountain-art.css";
 ---
-<section class="mountainArt">
-  <svg
-    class="mountainArt__scene"
-    viewBox="0 0 1000 850"
-    preserveAspectRatio="xMidYMax meet"
-    role="img"
-    aria-label="Illustration of mountains and clouds"
-  >
-    <!-- sky -->
-    <rect x="0" y="0" width="1000" height="850" fill="#45a8e3" />
-
-    <!-- clouds -->
-    <g fill="#f5f5f5">
-      <g>
-        <rect x="70" y="229" width="230" height="72" rx="36" />
-        <circle cx="139" cy="235" r="51" />
-        <circle cx="197" cy="216" r="64" />
-      </g>
-      <g>
-        <rect x="430" y="87" width="180" height="55" rx="28" />
-        <circle cx="484" cy="92" r="40" />
-        <circle cx="529" cy="77" r="50" />
-      </g>
-      <g>
-        <rect x="750" y="206" width="150" height="44" rx="22" />
-        <circle cx="795" cy="210" r="33" />
-        <circle cx="832" cy="198" r="42" />
-      </g>
-    </g>
-
-    <!-- back mountain (m3) -->
-    <polygon points="500,850 680,850 680,400" fill="#2a5e4f" />
-    <polygon points="680,850 860,850 680,400" fill="#245447" />
-
-    <!-- centre mountain (m1) with snow cap -->
-    <polygon points="265,850 500,850 500,290" fill="#325c50" />
-    <polygon points="500,850 735,850 500,290" fill="#294b41" />
-    <polygon points="444,424 500,424 500,290" fill="#f5f5f5" />
-    <polygon points="500,424 556,424 500,290" fill="#ece9e9" />
-
-    <!-- front mountain (m2) -->
-    <polygon points="175,850 300,850 300,520" fill="#2d6053" />
-    <polygon points="300,850 425,850 300,520" fill="#245447" />
-  </svg>
-</section>
 <section id="about" class={styles.hero} data-hero>
+  <div class={styles.clouds} aria-hidden="true">
+    <svg class={styles.cloud} style="top: 9%; left: 3%; width: clamp(100px, 13vw, 180px);" viewBox="0 0 200 120">
+      <rect x="20" y="70" width="160" height="40" rx="20" />
+      <circle cx="70" cy="70" r="38" />
+      <circle cx="120" cy="55" r="45" />
+    </svg>
+    <svg class={styles.cloud} style="top: 5%; right: 4%; width: clamp(120px, 15vw, 210px);" viewBox="0 0 200 120">
+      <rect x="20" y="70" width="160" height="40" rx="20" />
+      <circle cx="70" cy="70" r="38" />
+      <circle cx="120" cy="55" r="45" />
+    </svg>
+    <svg class={styles.cloud} style="top: 30%; left: 10%; width: clamp(80px, 10vw, 130px);" viewBox="0 0 200 120">
+      <rect x="20" y="70" width="160" height="40" rx="20" />
+      <circle cx="70" cy="70" r="38" />
+      <circle cx="120" cy="55" r="45" />
+    </svg>
+    <svg class={styles.cloud} style="top: 44%; right: 5%; width: clamp(90px, 11vw, 155px);" viewBox="0 0 200 120">
+      <rect x="20" y="70" width="160" height="40" rx="20" />
+      <circle cx="70" cy="70" r="38" />
+      <circle cx="120" cy="55" r="45" />
+    </svg>
+    <svg class={styles.cloud} style="top: 60%; left: 2%; width: clamp(90px, 11vw, 150px);" viewBox="0 0 200 120">
+      <rect x="20" y="70" width="160" height="40" rx="20" />
+      <circle cx="70" cy="70" r="38" />
+      <circle cx="120" cy="55" r="45" />
+    </svg>
+  </div>
+
   <div class:list={["container", styles.heroInner]} data-hero-inner>
     <span class="eyebrow">Software developer</span>
     <h1>
@@ -56,22 +39,38 @@ import "./mountain-art.css";
     </h1>
     <p class={styles.lede}>
       Hi, I'm Hayley &mdash; a software developer who likes shipping small, useful things.
-      I work mostly in TypeScript, React and Astro, backed by Postgres and Supabase.
     </p>
     <p class={styles.bio}>
       I'm working through my own complicated health journey, and a lot of what I build comes
       from real needs &mdash; calm, private tools that make a messy thing feel manageable. I care
-      about clear interfaces, honest software, and shipping.
+      about clear interfaces and useful software.
     </p>
     <p class={styles.bio}>
       When I'm not coding I'm probably wrangling a herd of guinea pigs.
     </p>
-    <div class={styles.ctaRow}>
-      <a class="btn" href="#work">See my work <span aria-hidden="true">&darr;</span></a>
-      <a class="btn" href="mailto:hayley@duke.co">Get in touch</a>
-      <a class="btn btn-ghost" href="https://github.com/hayleycodes">GitHub</a>
-    </div>
   </div>
+
+  <svg
+    class="mountainArt__scene"
+    viewBox="0 0 1000 850"
+    preserveAspectRatio="xMidYMax meet"
+    role="img"
+    aria-label="Illustration of mountains"
+  >
+    <!-- back mountain (m3) -->
+    <polygon points="300,850 480,850 480,400" fill="#2a5e4f" />
+    <polygon points="480,850 660,850 480,400" fill="#245447" />
+
+    <!-- centre mountain (m1) with snow cap -->
+    <polygon points="65,850 300,850 300,290" fill="#325c50" />
+    <polygon points="300,850 535,850 300,290" fill="#294b41" />
+    <polygon points="244,424 300,424 300,290" fill="#f5f5f5" />
+    <polygon points="300,424 356,424 300,290" fill="#ece9e9" />
+
+    <!-- front mountain (m2) -->
+    <polygon points="-25,850 100,850 100,520" fill="#2d6053" />
+    <polygon points="100,850 225,850 100,520" fill="#245447" />
+  </svg>
 </section>
 
 <script>

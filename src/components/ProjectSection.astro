@@ -5,11 +5,9 @@ import styles from "./ProjectSection.module.css";
 
 interface Props {
   theme: "relentless" | "baggage";
-  eyebrow: string;
   name: string;
   tagline: string;
   body: string;
-  stack: string[];
   image: ImageMetadata;
   imageAlt: string;
   imageSide: "left" | "right";
@@ -20,11 +18,9 @@ interface Props {
 
 const {
   theme,
-  eyebrow,
   name,
   tagline,
   body,
-  stack,
   image,
   imageAlt,
   imageSide,
@@ -39,14 +35,9 @@ const {
     <Image src={image} alt={imageAlt} class={styles.shot} />
 
     <div class={styles.content}>
-      <span class="eyebrow">{eyebrow}</span>
       <h2 class={styles.name}>{name}</h2>
       <p class={styles.tagline}>{tagline}</p>
       <p class={styles.body}>{body}</p>
-
-      <ul class={styles.stack}>
-        {stack.map((s) => <li class={styles.chip}>{s}</li>)}
-      </ul>
 
       <div class={styles.ctaRow}>
         {link ? (
