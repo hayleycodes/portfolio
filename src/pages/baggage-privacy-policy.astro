@@ -1,0 +1,161 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+const lastUpdated = "17 July 2026";
+---
+
+<Layout
+  title="BAGGAGE — Privacy Policy"
+  description="How BAGGAGE handles your data. Short version: your packing lists stay in your browser, and there are no accounts."
+>
+  <Header />
+  <main>
+    <section class="policySection">
+      <div class="container">
+        <article class="policy">
+          <span class="eyebrow">BAGGAGE</span>
+          <h1>Privacy Policy</h1>
+          <p class="updated">Last updated {lastUpdated}</p>
+
+          <p>
+            <a href="https://baggage.hayley.codes/">BAGGAGE</a> is a little web app for
+            organising the things you pack and carry. This policy explains what it does
+            with your data. The short version: almost nothing.
+          </p>
+
+          <h2>Your lists stay on your device</h2>
+          <p>
+            Everything you create in BAGGAGE — your trips, lists, and items — is stored
+            locally in your browser (using your browser's local storage). It never leaves
+            your device and is never sent to a server. There are no accounts and no logins,
+            so there's nothing for me to see, store, or share.
+          </p>
+          <p>
+            Because your data lives in your browser, clearing your browser data or using a
+            different device or browser means starting fresh. I can't recover lists for you,
+            because I never have them in the first place.
+          </p>
+
+          <h2>Anonymous analytics</h2>
+          <p>
+            BAGGAGE uses <a href="https://vercel.com/docs/analytics">Vercel Web Analytics</a>
+            to get a rough sense of how many people visit and which pages they use. This is
+            privacy-friendly by design: it doesn't use cookies, doesn't track you across other
+            websites, and doesn't collect information that identifies you personally. It only
+            records aggregate, anonymous usage.
+          </p>
+
+          <h2>Supporting BAGGAGE (Buy Me a Coffee)</h2>
+          <p>
+            If you choose to support BAGGAGE with a donation, payments are handled entirely by
+            <a href="https://www.buymeacoffee.com/">Buy Me a Coffee</a> and their payment
+            processors (such as Stripe). I never see or store your card or billing details.
+          </p>
+          <p>
+            Depending on your Buy Me a Coffee settings, I may receive your name (or a pseudonym),
+            email address, and any message you send — used only to say thank you. See the
+            <a href="https://www.buymeacoffee.com/privacy-policy">Buy Me a Coffee Privacy Policy</a>
+            for how they handle your payment data.
+          </p>
+
+          <h2>What I don't do</h2>
+          <p>
+            No accounts. No advertising. No selling or sharing of data. No tracking cookies.
+            I don't collect your name, email, or any personal details, because the app simply
+            doesn't ask for them.
+          </p>
+
+          <h2>Children's privacy</h2>
+          <p>
+            BAGGAGE isn't directed at children, and it doesn't collect personal information from
+            anyone — including children under 13.
+          </p>
+
+          <h2>Changes to this policy</h2>
+          <p>
+            If BAGGAGE ever changes in a way that affects your data, I'll update this page and
+            the date at the top.
+          </p>
+
+          <h2>Questions</h2>
+          <p>
+            If anything here is unclear, you're welcome to reach out at
+            <a href="mailto:hello@hayley.codes">hello@hayley.codes</a>.
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  /* BAGGAGE theme — pink accent with a deep-purple pop (see ProjectSection.module.css) */
+  .policySection {
+    position: relative;
+    overflow: hidden;
+    padding: 128px 0 96px;
+    background:
+      radial-gradient(1000px 520px at 15% -10%, #e8479f, transparent 55%),
+      radial-gradient(760px 480px at 105% 110%, rgba(102, 23, 203, 0.3), transparent 60%),
+      #cb228f;
+    color: #ffffff;
+  }
+
+  @media (min-width: 720px) {
+    .policySection {
+      padding: 160px 0 128px;
+    }
+  }
+
+  .policy {
+    position: relative;
+    z-index: 1;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  /* Chip — translucent white on the pink, like the project cards */
+  .policy :global(.eyebrow) {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+
+  .policy h1 {
+    font-family: "Caveat Brush", var(--font-family-heading);
+    color: #ffffff;
+  }
+
+  .policy h2 {
+    font-family: "Caveat Brush", var(--font-family-heading);
+    color: #ffffff;
+    margin-top: 1.6em;
+  }
+
+  .policy p {
+    color: rgba(255, 255, 255, 0.92);
+  }
+
+  .updated {
+    color: #ffe3f1 !important;
+    font-size: 0.9rem;
+    margin-top: -0.4em;
+    margin-bottom: 2em;
+  }
+
+  /* Links — white and underlined so they stay legible on the pink */
+  .policy a {
+    color: #ffffff;
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.55);
+    text-underline-offset: 3px;
+  }
+
+  .policy a:hover {
+    color: #ffe3f1;
+    text-decoration-color: #ffe3f1;
+  }
+</style>
