@@ -6,6 +6,7 @@ import ProjectSection from "../components/ProjectSection.astro";
 import Footer from "../components/Footer.astro";
 import relentlessShot from "../assets/relentless.png";
 import baggageShot from "../assets/baggage.png";
+import herdShot from "../assets/hayleys-herd.png";
 ---
 
 <Layout>
@@ -33,6 +34,17 @@ import baggageShot from "../assets/baggage.png";
         imageAlt="Screenshot of the Baggage app"
         imageSide="right"
         link="https://baggage.hayley.codes/"
+      />
+      <ProjectSection
+        theme="herd"
+        name="Hayley's Herd"
+        tagline="Management app for my guinea pigs."
+        body="An app for keeping tabs on my guinea pig herd — logging sightings, health, and family trees, plus PigCam, a live video feed of the enclosure. The app is just for me, but they pigs are Twitch for everyone!"
+        image={herdShot}
+        imageAlt="Screenshot of the Hayley's Herd app"
+        imageSide="left"
+        link="https://www.twitch.tv/hayleysherd"
+        linkLabel="Watch the pigs on Twitch"
       />
     </div>
   </main>

@@ -39,6 +39,38 @@
   --sec-btn-text: #ffffff;
 }
 
+/* Hayley's Herd — the app's soft purple→blue gradient with a faint emoji layer */
+.herd {
+  --sec-bg: linear-gradient(0deg, #c2e6f5, #dcb5ff);
+  --sec-text: #4a2d8a;
+  --sec-tagline: #6848ff;
+  --sec-btn-bg: #7c5cff;
+  --sec-btn-text: #ffffff;
+}
+
+/* Drifting produce & critters, echoing the app background */
+.herd::before {
+  content: "🌿 🐾 🐖 🌽 ☀️ 🍅 🌻 🌼 🥦 🥕 🥬 🐾 🥦 🍅 🌻 🌼 🥦 🥕 🥬 🐾 🥦 🌽 🍅 🌿 🐾 🌽 🍅 🌿 🐾 🐖 🌽 ☀️ 🍅 🌻 🌼 🥦 🥕 🥬 🐾 🥦 🌽 🍅 🌼 🌿 ☀️ 🥕 🌻 🐖 🥬 🥬 🌼 ☀️ 🌽 🌻 🥦 🌿 🐾 🐖 🥕 🍅 🌼 🌻 🥬 🐾 🌿 🌽 🐖 🍅 🥕 ☀️ 🥦 🐖 ☀️ 🐾 🌽 🍅 🌼 🌻 🥦 🌿 🥕 🥬 🐖 🐾 🥬 🌿 🥕 ☀️ 🌻 🥦 🌽 🍅 🌼 ☀️ 🌿 🌻 🥕 🐖 🌼 🍅 🥦 🌽 🥬 🐾 ☀️ 🌽 🌿 🍅 🥬 🥕 🐾 🌼 🐖 🥦 🌻 🍅 🐾 🌿 🥦 🌽 🌼 ☀️ 🥕 🌻 🐖 🥬 🥦 🐾 🌻 🌽 🌼 🌿 🥕 🥬 🐖 🐾 🥬 🌿 🥕 ☀️ 🌻 🥦 🌽 🍅 🌿 🐾 🐖 🌽 ☀️ 🍅 🌻 🌼 🥦 🥕 🥬 🐾 🥦 🍅 🌻 🌼 🥦 🥕 🥬 🐾 🥦 🌽 🍅 🌿 🐾 🌽 🍅 🌿 🐾 🐖 🌽 ☀️ 🍅 🌻 🌼 🥦 🥕 🥬 🐾 🥦 🌽 🍅 🌼 🌿 ☀️ 🥕 🌻 🐖 🥬 🥬 🌼 ☀️ 🌽 🌻 🥦 🌿 🐾 🐖 🥕 🍅 🌼 🌻 🥬 🐾 🌿 🌽 🐖 🍅 🥕 ☀️ 🥦 🐖 ☀️ 🐾 🌽 🍅 🌼 🌻 🥦 🌿 🥕 🥬 🐖 🐾 🥬 🌿 🥕 ☀️ 🌻 🥦 🌽 🍅 🌼 ☀️ 🌿 🌻 🥕 🐖 🌼 🍅 🥦 🌽 🥬 🐾 ☀️ 🌽 🌿 🍅 🥬 🥕 🐾 🌼 🐖 🥦 🌻 🍅 🐾 🌿 🥦 🌽 🌼 ☀️ 🥕 🌻 🐖 🥬 🥦 🐾 🌻 🌽 🌼 🌿 🥕 🥬 🐖 🐾 🥬 🌿 🥕 ☀️ 🌻 🥦 🌽 🍅 🌿 🐾 🐖 🌽 ☀️ 🍅 🌻 🌼 🥦 🥕 🥬 🐾 🥦 🍅 🌻 🌼 🥦 🥕 🥬 🐾 🥦 🌽 🍅 🌿 🐾 🌽 🍅 🌿 🐾 🐖 🌽 ☀️ 🍅 🌻 🌼 🥦 🥕 🥬 🐾 🥦 🌽 🍅 🌼 🌿 ☀️ 🥕 🌻 🐖 🥬 🥬 🌼 ☀️ 🌽 🌻 🥦 🌿 🐾 🐖 🥕 🍅 🌼 🌻 🥬 🐾 🌿 🌽 🐖 🍅 🥕 ☀️ 🥦 🐖 ☀️ 🐾 🌽 🍅 🌼 🌻 🥦 🌿 🥕 🥬 🐖 🐾 🥬 🌿 🥕 ☀️ 🌻 🥦 🌽 🍅 🌼 ☀️ 🌿 🌻 🥕 🐖 🌼 🍅 🥦 🌽 🥬 🐾 ☀️ 🌽 🌿 🍅 🥬 🥕 🐾 🌼 🐖 🥦 🌻 🍅 🐾 🌿 🥦 🌽 🌼 ☀️ 🥕 🌻 🐖 🥬 🥦 🐾 🌻 🌽 🌼 🌿 🥕 🥬 🐖 🐾 🥬 🌿 🥕 ☀️ 🌻 🥦 🌽 🍅";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 28px;
+  line-height: 60px;
+  letter-spacing: 20px;
+  word-spacing: 10px;
+  opacity: 0.12;
+  pointer-events: none;
+  transform: rotate(-15deg);
+  overflow: hidden;
+  z-index: 0;
+}
+
 .layout {
   position: relative;
   z-index: 1;
@@ -101,6 +133,10 @@
 
 .baggage .name {
   font-family: "Caveat Brush", var(--font-family-heading);
+}
+
+.herd .name {
+  font-weight: 800;
 }
 
 .tagline {
