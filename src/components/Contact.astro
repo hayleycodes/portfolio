@@ -1,0 +1,145 @@
+---
+// Contact form. Renders a self-contained card that drops into the /contact page.
+//
+// On submit it POSTs { name, email, message, source, website } to the
+// send-contact edge function (shared with the Relentless landing page);
+// `website` is a honeypot the backend expects. On success it swaps in a
+// "thanks, I'll be in touch" message.
+import styles from "./Contact.module.css";
+---
+
+<div class={styles.card} data-contact-card>
+  <form class={styles.form} novalidate>
+    <div class={styles.field}>
+      <label class={styles.label} for="contact-name">Name</label>
+      <input
+        class={styles.input}
+        id="contact-name"
+        type="text"
+        name="name"
+        autocomplete="name"
+        placeholder="Your name"
+        required
+      />
+    </div>
+
+    <div class={styles.field}>
+      <label class={styles.label} for="contact-email">Email</label>
+      <input
+        class={styles.input}
+        id="contact-email"
+        type="email"
+        name="email"
+        inputmode="email"
+        autocomplete="email"
+        placeholder="you@email.com"
+        required
+      />
+    </div>
+
+    <div class={styles.field}>
+      <label class={styles.label} for="contact-message">Message</label>
+      <textarea
+        class={styles.textarea}
+        id="contact-message"
+        name="message"
+        rows="6"
+        placeholder="What would you like to say?"
+        required></textarea>
+    </div>
+
+    <!-- Honeypot: off-screen, not display:none, excluded from tab + autofill. -->
+    <div class={styles.honeypot} aria-hidden="true">
+      <label>Leave this field empty
+        <input type="text" name="website" tabindex="-1" autocomplete="off" />
+      </label>
+    </div>
+
+    <div class={styles.actions}>
+      <button class:list={["btn", styles.btn]} type="submit">Send message →</button>
+    </div>
+    <p class={styles.status} data-status role="status" aria-live="polite"></p>
+  </form>
+
+  <p class={styles.success} data-success hidden>
+    Thanks — your message is on its way. <span class={styles.muted}>I'll get back to you soon.</span>
+  </p>
+</div>
+
+<script>
+  // The deployed send-contact edge function (in the Relentless Supabase project).
+  // verify_jwt = false, so it's called anonymously with no auth header.
+  const ENDPOINT = "https://cvpjxelihnuhltcuadti.supabase.co/functions/v1/send-contact";
+  const SOURCE = "hayley.codes";
+
+  const form = document.querySelector<HTMLFormElement>("[data-contact-card] form");
+  if (form) {
+    const card = form.closest<HTMLElement>("[data-contact-card]");
+    const statusEl = form.querySelector<HTMLElement>("[data-status]");
+    const successEl = card?.querySelector<HTMLElement>("[data-success]");
+    const button = form.querySelector<HTMLButtonElement>("button[type=submit]");
+    const nameEl = form.querySelector<HTMLInputElement>("input[name=name]");
+    const emailEl = form.querySelector<HTMLInputElement>("input[name=email]");
+    const messageEl = form.querySelector<HTMLTextAreaElement>("textarea[name=message]");
+    const honeypotEl = form.querySelector<HTMLInputElement>("input[name=website]");
+    const idle = button?.textContent ?? "";
+
+    const setStatus = (msg: string) => { if (statusEl) statusEl.textContent = msg; };
+    const setBusy = (busy: boolean) => {
+      if (!button) return;
+      button.disabled = busy;
+      button.textContent = busy ? "Sending…" : idle;
+    };
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const name = nameEl?.value.trim() ?? "";
+      const email = emailEl?.value.trim() ?? "";
+      const message = messageEl?.value.trim() ?? "";
+
+      if (!name) {
+        setStatus("Mind adding your name?");
+        nameEl?.focus();
+        return;
+      }
+      if (!email || !emailEl?.checkValidity()) {
+        setStatus("That email doesn't look quite right — mind checking it?");
+        emailEl?.focus();
+        return;
+      }
+      if (!message) {
+        setStatus("Don't forget the message!");
+        messageEl?.focus();
+        return;
+      }
+
+      setStatus("");
+      setBusy(true);
+
+      try {
+        const res = await fetch(ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email, message, source: SOURCE, website: honeypotEl?.value ?? "" }),
+        });
+        const data = await res.json().catch(() => ({}));
+
+        if (res.ok && data?.ok) {
+          form.hidden = true;
+          if (successEl) successEl.hidden = false;
+          return;
+        }
+
+        setStatus(
+          data?.error === "Invalid email"
+            ? "That email doesn't look quite right — mind checking it?"
+            : "Something went wrong on my end. Please try again in a moment.",
+        );
+      } catch {
+        setStatus("Couldn't reach the server — please try again.");
+      } finally {
+        setBusy(false);
+      }
+    });
+  }
+</script>
