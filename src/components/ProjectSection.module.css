@@ -25,6 +25,7 @@
   --sec-tagline: #e6ddf7;
   --sec-btn-bg: #ffffff;
   --sec-btn-text: #4b3b7a;
+  --sec-screen-top: #ffffff;
 }
 
 /* Baggage — the pink accent (#ff5ca8) with a deep-purple pop (from baggage/src/variables.css) */
@@ -37,6 +38,23 @@
   --sec-tagline: #ffe3f1;
   --sec-btn-bg: #6617cb;
   --sec-btn-text: #ffffff;
+  --sec-screen-top: #5a24d1;
+}
+
+/* Cellout — fresh green canvas with a deeper green accent */
+.cellout {
+  --sec-bg:
+    radial-gradient(1000px 560px at 88% -12%, #e3f9d3, transparent 60%),
+    radial-gradient(820px 480px at -6% 110%, rgba(34, 120, 66, 0.18), transparent 60%),
+    #d0f4ba;
+  --sec-text: #123524;
+  --sec-tagline: #1f7a45;
+  --sec-btn-bg: #2f9e5c;
+  --sec-btn-text: #ffffff;
+  --sec-chip: rgba(18, 53, 36, 0.08);
+  --sec-chip-border: rgba(18, 53, 36, 0.18);
+  --sec-screen-top: #a9cef0;
+  --sec-screen-pad: 14px;
 }
 
 /* Hayley's Herd — the app's soft purple→blue gradient with a faint emoji layer */
@@ -46,6 +64,8 @@
   --sec-tagline: #6848ff;
   --sec-btn-bg: #7c5cff;
   --sec-btn-text: #ffffff;
+  --sec-screen-top: #d3bcf6;
+  --sec-screen-pad: 14px;
 }
 
 /* Drifting produce & critters, echoing the app background */
@@ -92,18 +112,42 @@
   order: 1;
 }
 
-.shot {
+/* Phone frame - iPhone-ish proportions, matching the Relentless landing page. */
+.phone {
+  position: relative;
   flex: 0 0 auto;
-  width: min(300px, 100%);
-  height: auto;
-  border-radius: var(--radius-lg);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
-  display: block;
+  width: min(280px, 100%);
+  aspect-ratio: 9 / 19.5;
+  background: #f4f4f6;
+  border-radius: 44px;
+  padding: 10px;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.06) inset,
+    0 30px 60px -20px rgba(0, 0, 0, 0.35),
+    0 10px 25px -10px rgba(0, 0, 0, 0.25);
   order: 2;
 }
 
+.phoneScreen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding-top: var(--sec-screen-pad, 0);
+  background: var(--sec-screen-top, #ffffff);
+  border-radius: 34px;
+  overflow: hidden;
+}
+
+.shot {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
 /* Screenshot on the left; text follows on the right. */
-.mediaLeft .shot {
+.mediaLeft .phone {
   order: 0;
 }
 
@@ -114,8 +158,8 @@
     gap: 28px;
   }
   .content,
-  .shot,
-  .mediaLeft .shot {
+  .phone,
+  .mediaLeft .phone {
     order: 0;
   }
 }

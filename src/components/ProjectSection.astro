@@ -4,7 +4,7 @@ import type { ImageMetadata } from "astro";
 import styles from "./ProjectSection.module.css";
 
 interface Props {
-  theme: "relentless" | "baggage" | "herd";
+  theme: "relentless" | "baggage" | "herd" | "cellout";
   name: string;
   tagline: string;
   body: string;
@@ -32,7 +32,11 @@ const {
 
 <section class:list={[styles.section, styles[theme]]}>
   <div class:list={["container", styles.layout, imageSide === "left" && styles.mediaLeft]}>
-    <Image src={image} alt={imageAlt} class={styles.shot} />
+    <div class={styles.phone}>
+      <div class={styles.phoneScreen}>
+        <Image src={image} alt={imageAlt} class={styles.shot} />
+      </div>
+    </div>
 
     <div class={styles.content}>
       <h2 class={styles.name}>{name}</h2>
