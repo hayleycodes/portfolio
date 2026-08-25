@@ -4,13 +4,14 @@ import type { ImageMetadata } from "astro";
 import styles from "./ProjectSection.module.css";
 
 interface Props {
-  theme: "relentless" | "baggage" | "herd" | "cellout";
+  theme: "relentless" | "canopy" | "baggage" | "herd" | "cellout";
   name: string;
   tagline: string;
   body: string;
   image: ImageMetadata;
   imageAlt: string;
   imageSide: "left" | "right";
+  variant?: "phone" | "wide";
   link?: string | null;
   linkLabel?: string | null;
   status?: string | null;
@@ -24,34 +25,63 @@ const {
   image,
   imageAlt,
   imageSide,
+  variant = "phone",
   link = null,
   linkLabel = null,
   status = null,
 } = Astro.props;
 ---
 
-<section class:list={[styles.section, styles[theme]]}>
-  <div class:list={["container", styles.layout, imageSide === "left" && styles.mediaLeft]}>
-    <div class={styles.phone}>
-      <div class={styles.phoneScreen}>
-        <Image src={image} alt={imageAlt} class={styles.shot} />
+{variant === "wide" ? (
+  <section class:list={[styles.section, styles[theme]]}>
+    <div class:list={["container", styles.wide]}>
+      <div class={styles.wideHead}>
+        <h2 class={styles.name}>{name}</h2>
+        <p class={styles.tagline}>{tagline}</p>
+      </div>
+
+      <div class={styles.screenshot}>
+        <Image src={image} alt={imageAlt} class={styles.wideShot} />
+      </div>
+
+      <div class={styles.wideBody}>
+        <p class={styles.body}>{body}</p>
+        <div class={styles.ctaRow}>
+          {link ? (
+            <a class={styles.visit} href={link} target="_blank" rel="noopener">
+              {linkLabel ?? "Visit"} <span aria-hidden="true">&nearr;</span>
+            </a>
+          ) : (
+            status && <span class={styles.status}>{status}</span>
+          )}
+        </div>
       </div>
     </div>
+  </section>
+) : (
+  <section class:list={[styles.section, styles[theme]]}>
+    <div class:list={["container", styles.layout, imageSide === "left" && styles.mediaLeft]}>
+      <div class={styles.phone}>
+        <div class={styles.phoneScreen}>
+          <Image src={image} alt={imageAlt} class={styles.shot} />
+        </div>
+      </div>
 
-    <div class={styles.content}>
-      <h2 class={styles.name}>{name}</h2>
-      <p class={styles.tagline}>{tagline}</p>
-      <p class={styles.body}>{body}</p>
+      <div class={styles.content}>
+        <h2 class={styles.name}>{name}</h2>
+        <p class={styles.tagline}>{tagline}</p>
+        <p class={styles.body}>{body}</p>
 
-      <div class={styles.ctaRow}>
-        {link ? (
-          <a class={styles.visit} href={link} target="_blank" rel="noopener">
-            {linkLabel ?? "Visit"} <span aria-hidden="true">&nearr;</span>
-          </a>
-        ) : (
-          status && <span class={styles.status}>{status}</span>
-        )}
+        <div class={styles.ctaRow}>
+          {link ? (
+            <a class={styles.visit} href={link} target="_blank" rel="noopener">
+              {linkLabel ?? "Visit"} <span aria-hidden="true">&nearr;</span>
+            </a>
+          ) : (
+            status && <span class={styles.status}>{status}</span>
+          )}
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+)}

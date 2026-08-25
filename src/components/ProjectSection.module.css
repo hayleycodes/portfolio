@@ -28,6 +28,19 @@
   --sec-screen-top: #ffffff;
 }
 
+/* Canopy — deep teal/emerald, echoing a forest canopy */
+.canopy {
+  --sec-bg:
+    radial-gradient(1100px 620px at 84% -14%, #2fbf9b, transparent 60%),
+    radial-gradient(900px 520px at -8% 114%, rgba(9, 51, 46, 0.4), transparent 60%),
+    #0f5f52;
+  --sec-text: #ffffff;
+  --sec-tagline: #b9f2e2;
+  --sec-btn-bg: #ffffff;
+  --sec-btn-text: #0f5f52;
+  --sec-screen-top: #0b463c;
+}
+
 /* Baggage — the pink accent (#ff5ca8) with a deep-purple pop (from baggage/src/variables.css) */
 .baggage {
   --sec-bg:
@@ -110,6 +123,53 @@
   flex: 1 1 auto;
   min-width: 0;
   order: 1;
+}
+
+/* Wide variant — heading above a full-width screenshot, descriptor below. */
+.wide {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.wideHead {
+  max-width: 720px;
+  margin-bottom: 40px;
+}
+
+.wideHead .tagline {
+  margin-bottom: 0;
+}
+
+.screenshot {
+  width: 100%;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow:
+    0 30px 60px -20px rgba(0, 0, 0, 0.35),
+    0 10px 25px -10px rgba(0, 0, 0, 0.25);
+}
+
+.wideShot {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.wideBody {
+  max-width: 620px;
+  margin-top: 40px;
+}
+
+.wideBody .body {
+  margin: 0 0 1.8em;
+}
+
+.wide .ctaRow {
+  justify-content: center;
 }
 
 /* Phone frame - iPhone-ish proportions, matching the Relentless landing page. */
