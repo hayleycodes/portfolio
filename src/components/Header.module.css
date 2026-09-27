@@ -52,3 +52,15 @@
   color: var(--color-text);
 }
 
+.nav :global(.bmc-btn-container) {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1000;
+  margin: 0 !important;
+}
+
+.nav :global(.bmc-btn) {
+  border: 2px solid var(--color-white) !important;
+}
+
